@@ -12,9 +12,9 @@ router.get("/:id", userController.getUserById);
 router.delete("/:id", userController.deleteUserById);
 
 // // API for update data by id
-// router.patch("/:id", userController.UpdateUserById);
+router.patch("/:id", userController.UpdateUserById);
 
 // // API for create new user data
-// router.post("/", userController.createUser);
+router.post("/", userController.createUser);
 
 module.exports = router;
