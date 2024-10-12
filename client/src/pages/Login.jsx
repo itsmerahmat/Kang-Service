@@ -43,30 +43,37 @@ function Login({ setUser }) {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <div className="container mt-5">
+    <h2 className="text-center mb-4">Login</h2>
+    <form onSubmit={handleLogin} className="shadow p-4 rounded">
+      <div className="mb-3">
+        <label htmlFor="username" className="form-label">Username:</label>
+        <input
+          type="text"
+          id="username"
+          className="form-control"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">Password:</label>
+        <input
+          type="password"
+          id="password"
+          className="form-control"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <button type="submit" className="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+  
   );
 }
 

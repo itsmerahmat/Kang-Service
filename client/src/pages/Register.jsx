@@ -15,6 +15,9 @@ function Register() {
         icon: 'success',
         title: 'Registration Successful',
       });
+      // Optionally reset the form after successful registration
+      setUsername('');
+      setPassword('');
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -25,11 +28,36 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Register</button>
-    </form>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Register</h2>
+      <form onSubmit={handleRegister} className="shadow p-4 rounded">
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label">Username:</label>
+          <input
+            type="text"
+            id="username"
+            className="form-control"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100">Register</button>
+      </form>
+    </div>
   );
 }
 

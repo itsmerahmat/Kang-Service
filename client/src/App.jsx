@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AdminDashboard from './pages/AdminDashboard';
 import LandingPage from './pages/LandingPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   const [user, setUser] = useState(null);
