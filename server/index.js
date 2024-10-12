@@ -1,9 +1,17 @@
 const morgan = require("morgan");
 const express = require("express");
 const usersRoute = require("./routes/usersRoute.js");
+const { login, register } = require("./controller/authController.js");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow your Vite frontend
+  })
+);
 
 // Middleware Reading json from body (client)
 app.use(express.json());
@@ -31,6 +39,11 @@ app.get("/", async (req, res) => {
 
 // Routes
 app.use("/api/v1/users", usersRoute);
+
+
+
+app.post("/api/login", login);
+app.post("/api/register", register);
 
 // Middleware to handle page not found
 app.use((req, res, next) => {
