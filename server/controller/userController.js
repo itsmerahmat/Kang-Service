@@ -85,71 +85,71 @@ async function deleteUserById(req, res) {
 }
 
 // Function for update user by id
-// async function UpdateUserById(req, res) {
-//     const { firstName, lastName, age, phoneNumber } = req.body;
-//     const id = req.params.id;
-//     try {
-//         const user = await User.findByPk(id);
-//         if (!user) {
-//             return res.status(404).json({
-//                 status: "Failed",
-//                 message: "Can't find spesific id user",
-//                 isSuccess: false,
-//                 data: null,
-//             });
-//         }
+async function UpdateUserById(req, res) {
+    const { username, name, password, role } = req.body;
+    const id = req.params.id;
+    try {
+        const user = await User.findByPk(id);
+        if (!user) {
+            return res.status(404).json({
+                status: "Failed",
+                message: "Can't find spesific id user",
+                isSuccess: false,
+                data: null,
+            });
+        }
 
-//         user.firstName = firstName;
-//         user.lastName = lastName;
-//         user.age = age;
-//         user.phoneNumber = phoneNumber;
+        user.username = username;
+        user.name = name;
+        user.password = password;
+        user.role = role;
 
-//         await user.save();
+        await user.save();
 
-//         res.status(200).json({
-//             status: "Success",
-//             message: "Successfully update user data",
-//             isSuccess: true,
-//             data: { user },
-//         });
-//     } catch (error) {
-//         res.status(500).json({
-//             status: "Failed",
-//             message: "Failed to update user data",
-//             isSuccess: false,
-//             data: null,
-//             error: error.message,
-//         });
-//     }
-// }
+        res.status(200).json({
+            status: "Success",
+            message: "Successfully update user data",
+            isSuccess: true,
+            data: { user },
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "Failed",
+            message: "Failed to update user data",
+            isSuccess: false,
+            data: null,
+            error: error.message,
+        });
+    }
+}
 
-// async function createUser(req, res) {
-//     const newUser = req.body;
+async function createUser(req, res) {
+    const newUser = req.body;
 
-//     try {
-//         await User.create(newUser);
+    try {
+        await User.create(newUser);
 
-//         res.status(200).json({
-//             status: "Success",
-//             message: "Successfully added user data",
-//             isSuccess: true,
-//             data: { newUser },
-//         });
-//     } catch (error) {
-//         res.status(500).json({
-//             status: "Failed",
-//             message: "Failed to add user data",
-//             isSuccess: false,
-//             data: null,
-//             error: error.message,
-//         });
-//     }
-// }
+        res.status(200).json({
+            status: "Success",
+            message: "Successfully added user data",
+            isSuccess: true,
+            data: { newUser },
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "Failed",
+            message: "Failed to add user data",
+            isSuccess: false,
+            data: null,
+            error: error.message,
+        });
+    }
+}
 
 module.exports = {
     getAllUser,
     getUserById,
     deleteUserById,
-    // UpdateUserById,
-    // createUser,
+    UpdateUserById,
+    createUser,
 };
