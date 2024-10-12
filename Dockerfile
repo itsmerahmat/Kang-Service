@@ -1,35 +1,20 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18 AS client-build
+# Use the official Node.js image as the base image
+FROM node:18
 
-# Set the working directory for the client
-WORKDIR /app/client
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy the client package.json and install dependencies
-COPY client/package*.json ./
+# Copy the application files into the working directory
+COPY . /app
+
+# Install the application dependencies
 RUN npm install
 
-# Copy the rest of the client files and build the React app
-COPY client/ ./
+# Build the React application
 RUN npm run build
 
-# Set the working directory for the server
-FROM node:18 AS server-build
-
-# Set the working directory for the server
-WORKDIR /app/server
-
-# Copy the server package.json and install dependencies
-COPY server/package*.json ./
-RUN npm install --production
-
-# Copy the rest of the server files
-COPY server/ ./
-
-# Copy the built React app from the client-build stage to the server
-COPY --from=client-build /app/client/build /app/server/build
-
-# Expose the port the server runs on
+# Expose port 3000
 EXPOSE 3000
 
-# Command to run the Express server
+# Define the entry point for the container
 CMD ["npm", "start"]
