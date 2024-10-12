@@ -1,22 +1,20 @@
-# server/Dockerfile
-
-# Use the official Node.js image
-FROM node:14
+# Use an official Node.js runtime as a parent image
+FROM node:18
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package*.json ./
+COPY server/package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
 # Copy the rest of the application code
-COPY . .
+COPY server/ .
 
-# Expose the server port
-EXPOSE 5000
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Command to run the server
+# Command to run the app
 CMD ["npm", "start"]
