@@ -8,8 +8,11 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    const api_url = process.env.API_URL || "http://localhost:3000";
+
     try {
-      await axios.post('http://localhost:5000/api/register', { username, password });
+      await axios.post(`${api_url}/register`, { username, password });
 
       Swal.fire({
         icon: 'success',
