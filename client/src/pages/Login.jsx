@@ -8,12 +8,12 @@ function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const api_url = process.env.API_URL || 'https://kang-service.onrender.com';
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${api_url}/api/login`, {
+      const { data } = await axios.post(`${apiUrl}/api/login`, {
         username,
         password,
       });

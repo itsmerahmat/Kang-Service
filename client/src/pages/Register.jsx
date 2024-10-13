@@ -9,10 +9,9 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const api_url = process.env.API_URL || 'https://kang-service.onrender.com';
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     try {
-      await axios.post(`${api_url}/api/register`, { username, password });
+      await axios.post(`${apiUrl}/api/register`, { username, password });
 
       Swal.fire({
         icon: 'success',
