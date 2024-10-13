@@ -8,7 +8,7 @@ function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const api_url = process.env.API_URL;
+  const api_url = process.env.API_URL || 'https://kang-service.onrender.com';
 
   const handleLogin = async (e) => {
     e.preventDefault();
