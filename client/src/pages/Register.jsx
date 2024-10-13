@@ -12,7 +12,7 @@ function Register() {
     const api_url = process.env.API_URL || "http://localhost:3000";
 
     try {
-      await axios.post(`${api_url}/register`, { username, password });
+      await axios.post(`${api_url}/api/register`, { username, password });
 
       Swal.fire({
         icon: 'success',

@@ -8,12 +8,12 @@ function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const api_url = process.env.API_URL || "http://localhost:3000";
+  const api_url = process.env.API_URL || "http://localhost:3000/";
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${api_url}/login`, {
+      const { data } = await axios.post(`${api_url}/api/login`, {
         username,
         password,
       });
