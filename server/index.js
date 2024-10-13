@@ -6,10 +6,11 @@ const cors = require("cors");
 
 const app = express();
 const port = 3000;
+const frontEndUrl = process.env.FRONT_END_URL || "http://localhost:5173";
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow your Vite frontend
+    origin: frontEndUrl,
   })
 );
 
