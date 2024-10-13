@@ -8,7 +8,7 @@ function Login({ setUser }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const api_url = process.env.API_URL || "http://localhost:3000/";
+  const api_url = process.env.API_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();

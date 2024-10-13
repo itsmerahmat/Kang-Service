@@ -9,7 +9,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const api_url = process.env.API_URL || "http://localhost:3000";
+    const api_url = process.env.API_URL;
 
     try {
       await axios.post(`${api_url}/api/register`, { username, password });
